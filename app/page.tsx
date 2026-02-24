@@ -753,7 +753,7 @@ export default function WorkiMetaAdsLanding() {
               </p>
 
               <div style={{ marginBottom: 6 }}>
-                <span style={{ fontSize: 50, fontWeight: 900, color: "#fff" }}>R$ 2.000</span>
+                <span style={{ fontSize: 50, fontWeight: 900, color: "#fff" }}>R$ 1.997</span>
                 <span style={{ fontSize: 20, fontWeight: 700, color: "rgba(229,231,235,0.45)" }}>,00</span>
               </div>
 
