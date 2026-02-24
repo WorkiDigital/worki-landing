@@ -740,22 +740,28 @@ export default function WorkiMetaAdsLanding() {
 
               {/* Bio */}
               <div style={{ flex: "1 1 300px", minWidth: 250 }}>
-                <h3 style={{ fontSize: 24, fontWeight: 900, color: "#fff", margin: "0 0 4px 0" }}>Herickson</h3>
+                <h3 style={{ fontSize: 24, fontWeight: 900, color: "#fff", margin: "0 0 4px 0" }}>Herickson Maia</h3>
                 <p style={{
                   fontSize: 14, fontWeight: 600, margin: "0 0 16px 0",
                   backgroundImage: `linear-gradient(135deg, ${COLORS.purple}, ${COLORS.magenta}, ${COLORS.orange})`,
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-                }}>Gestor de Tráfego & Performance</p>
+                }}>Gestor de Tráfego & Performance · +5 anos</p>
 
-                <p style={{ fontSize: 15, color: "rgba(229,231,235,0.7)", lineHeight: 1.7, margin: "0 0 16px 0" }}>
-                  Especialista em Facebook e Instagram Ads com experiência gerenciando campanhas para múltiplos nichos. Fundador da Worki Digital, ajudo empresários e gestores a transformar investimento em tráfego em resultados previsíveis e escaláveis.
+                <p style={{ fontSize: 15, color: "rgba(229,231,235,0.7)", lineHeight: 1.7, margin: "0 0 12px 0" }}>
+                  Especialista em transformar investimento em tráfego em previsibilidade de faturamento. Fundador da Worki Digital, já estruturei mais de 70 projetos e gerei mais de R$ 16 milhões em vendas para meus clientes.
+                </p>
+                <p style={{ fontSize: 15, color: "rgba(229,231,235,0.7)", lineHeight: 1.7, margin: "0 0 12px 0" }}>
+                  Esses números não vieram de sorte — vieram de método, análise e de entender o jogo do leilão. Eu não trabalho com achismo. Trabalho com estrutura validada, leitura estratégica de métricas e escala com controle.
+                </p>
+                <p style={{ fontSize: 15, color: "rgba(229,231,235,0.55)", lineHeight: 1.7, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                  Eu ensino exatamente o que aplico. Se você quer dominar o tráfego pago e parar de depender da sorte, você está no lugar certo. 🚀
                 </p>
 
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                   {[
-                    { n: "6+", l: "Anos em tráfego" },
-                    { n: "50+", l: "Clientes atendidos" },
-                    { n: "1M+", l: "Investido em ads" },
+                    { n: "5M+", l: "Gerenciados em ads" },
+                    { n: "16M+", l: "Em vendas geradas" },
+                    { n: "70+", l: "Projetos estruturados" },
                   ].map((stat, i) => (
                     <div key={i} style={{
                       padding: "10px 16px", borderRadius: 12,
