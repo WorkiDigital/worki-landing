@@ -403,7 +403,7 @@ export default function WorkiMetaAdsLanding() {
     { q: "Preciso ter investimento mínimo em tráfego?", a: "Recomendamos pelo menos R$ 30/dia para aplicar na prática. Mas o método funciona com qualquer orçamento — a estratégia é a mesma que gestores usam com R$ 10k/dia." },
     { q: "E se eu não gostar?", a: "Se após a primeira call você sentir que não é para você, devolvemos 100% do valor. Sem burocracia, sem perguntas. Confiamos no método." },
     { q: "Como funciona o pagamento?", a: "PIX, cartão de crédito (até 6x sem juros) ou boleto. O acesso é liberado imediatamente após confirmação do pagamento." },
-    { q: "R$ 2.000 é caro para uma mentoria?", a: "Pense assim: são 6 meses de acompanhamento individual com um especialista. O valor de uma única campanha bem otimizada já paga a mentoria inteira. É investimento que se paga na primeira campanha bem feita." },
+    { q: "R$ 1.997 é caro para uma mentoria?", a: "Pense assim: são 6 meses de acompanhamento individual com um especialista. O valor de uma única campanha bem otimizada já paga a mentoria inteira. É investimento que se paga na primeira campanha bem feita." },
   ];
 
   const audiences = [
