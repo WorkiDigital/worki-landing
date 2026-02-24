@@ -706,6 +706,73 @@ export default function WorkiMetaAdsLanding() {
         </div>
       </section>
 
+      {/* ════════════════════════════════ SOBRE O MENTOR ════════════════════════════════ */}
+      <section style={{ padding: "80px 20px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <Reveal>
+            <div style={{ textAlign: "center", marginBottom: 44 }}>
+              <span style={{
+                display: "inline-block", padding: "5px 14px", borderRadius: 20, fontSize: 12, fontWeight: 700,
+                background: `${COLORS.primaryBlue}1A`, border: `1px solid ${COLORS.primaryBlue}33`, color: COLORS.primaryBlue, marginBottom: 14,
+              }}>👤 Seu Mentor</span>
+              <h2 style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
+                Quem vai te guiar nessa <span style={{ color: COLORS.primaryBlue }}>jornada</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <Card glow="blue" style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "center", padding: "32px 36px" }}>
+              {/* Photo */}
+              <div style={{ flex: "0 0 auto" }}>
+                <div style={{
+                  width: 200, height: 200, borderRadius: 20, overflow: "hidden",
+                  border: `3px solid ${COLORS.primaryBlue}40`,
+                  boxShadow: `0 0 40px ${COLORS.primaryBlue}20`,
+                }}>
+                  <img
+                    src="https://i.imgur.com/8x0RGYh.png"
+                    alt="Herickson — Mentor de Tráfego Pago"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+                  />
+                </div>
+              </div>
+
+              {/* Bio */}
+              <div style={{ flex: "1 1 300px", minWidth: 250 }}>
+                <h3 style={{ fontSize: 24, fontWeight: 900, color: "#fff", margin: "0 0 4px 0" }}>Herickson</h3>
+                <p style={{
+                  fontSize: 14, fontWeight: 600, margin: "0 0 16px 0",
+                  backgroundImage: `linear-gradient(135deg, ${COLORS.purple}, ${COLORS.magenta}, ${COLORS.orange})`,
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                }}>Gestor de Tráfego & Performance</p>
+
+                <p style={{ fontSize: 15, color: "rgba(229,231,235,0.7)", lineHeight: 1.7, margin: "0 0 16px 0" }}>
+                  Especialista em Facebook e Instagram Ads com experiência gerenciando campanhas para múltiplos nichos. Fundador da Worki Digital, ajudo empresários e gestores a transformar investimento em tráfego em resultados previsíveis e escaláveis.
+                </p>
+
+                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                  {[
+                    { n: "6+", l: "Anos em tráfego" },
+                    { n: "50+", l: "Clientes atendidos" },
+                    { n: "1M+", l: "Investido em ads" },
+                  ].map((stat, i) => (
+                    <div key={i} style={{
+                      padding: "10px 16px", borderRadius: 12,
+                      background: `${COLORS.primaryBlue}12`, border: `1px solid ${COLORS.primaryBlue}25`,
+                      textAlign: "center",
+                    }}>
+                      <div style={{ fontSize: 20, fontWeight: 900, color: COLORS.primaryBlue }}>{stat.n}</div>
+                      <div style={{ fontSize: 11, color: "rgba(229,231,235,0.45)", marginTop: 2 }}>{stat.l}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ════════════════════════════════ OFERTA ════════════════════════════════ */}
       <section ref={offerRef} style={{ padding: "80px 20px" }}>
         <div style={{ maxWidth: 580, margin: "0 auto" }}>
@@ -758,7 +825,7 @@ export default function WorkiMetaAdsLanding() {
               </div>
 
               <p style={{ fontSize: 16, color: COLORS.success, fontWeight: 700, margin: "0 0 28px 0" }}>
-                ou 6x de R$ 333,33 sem juros
+                ou 6x de R$ 332,83 sem juros
               </p>
 
               <CTAIG onClick={openForm} full>
@@ -818,7 +885,7 @@ export default function WorkiMetaAdsLanding() {
           color: "#fff", fontWeight: 800, borderRadius: 14, padding: "14px 28px",
           fontSize: 15, border: "none", cursor: "pointer",
           boxShadow: "0 0 35px rgba(193,53,132,0.22)", fontFamily: FONT,
-        }}>🚀 Garantir Minha Vaga — R$ 2.000</button>
+        }}>🚀 Garantir Minha Vaga — R$ 1.997</button>
       </div>
     </div>
   );
