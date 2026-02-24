@@ -149,6 +149,152 @@ function IGText({ children, style: s = {} }) {
   }}>{children}</span>;
 }
 
+// ─── WHATSAPP FORM MODAL ───
+function WhatsAppModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [sending, setSending] = useState(false);
+
+  const formatPhone = (v: string) => {
+    const nums = v.replace(/\D/g, "").slice(0, 11);
+    if (nums.length <= 2) return nums;
+    if (nums.length <= 7) return `(${nums.slice(0, 2)}) ${nums.slice(2)}`;
+    return `(${nums.slice(0, 2)}) ${nums.slice(2, 7)}-${nums.slice(7)}`;
+  };
+
+  const handleSubmit = () => {
+    if (!nome.trim() || telefone.replace(/\D/g, "").length < 10) return;
+    setSending(true);
+    const msg = encodeURIComponent(
+      `Olá Herickson, meu nome é ${nome.trim()}, Quero garantir a mentoria da Worki Digital.`
+    );
+    const url = `https://wa.me/5585998372658?text=${msg}`;
+    window.open(url, "_blank");
+    setTimeout(() => {
+      setSending(false);
+      setNome("");
+      setTelefone("");
+      onClose();
+    }, 1000);
+  };
+
+  if (!open) return null;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)",
+        display: "flex", alignItems: "center", justifyContent: "center", zIndex: 200, padding: 20,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: COLORS.surface, border: `1px solid ${COLORS.primaryBlue}40`, borderRadius: 24,
+          padding: "36px 32px", maxWidth: 440, width: "100%", position: "relative", overflow: "hidden",
+          boxShadow: "0 0 60px rgba(24,119,242,0.2)",
+        }}
+      >
+        {/* Top gradient line */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${COLORS.primaryBlue}, ${COLORS.magenta}, ${COLORS.orange})` }} />
+
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute", top: 14, right: 16, background: "none", border: "none",
+            color: "rgba(229,231,235,0.4)", fontSize: 22, cursor: "pointer", fontFamily: FONT,
+          }}
+        >✕</button>
+
+        {/* Icon */}
+        <div style={{ textAlign: "center", marginBottom: 20 }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            width: 56, height: 56, borderRadius: "50%",
+            background: `${COLORS.success}20`, border: `1px solid ${COLORS.success}30`,
+            fontSize: 28,
+          }}>💬</div>
+        </div>
+
+        <h3 style={{ fontSize: 22, fontWeight: 800, textAlign: "center", margin: "0 0 6px 0", color: "#fff", fontFamily: FONT }}>
+          Garanta sua vaga agora
+        </h3>
+        <p style={{ fontSize: 14, color: "rgba(229,231,235,0.5)", textAlign: "center", margin: "0 0 28px 0", fontFamily: FONT }}>
+          Preencha seus dados e você será redirecionado para o WhatsApp
+        </p>
+
+        {/* Nome */}
+        <div style={{ marginBottom: 16 }}>
+          <label style={{ fontSize: 13, fontWeight: 600, color: "rgba(229,231,235,0.7)", marginBottom: 6, display: "block", fontFamily: FONT }}>
+            Seu nome
+          </label>
+          <input
+            type="text"
+            placeholder="Como quer ser chamado?"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            style={{
+              width: "100%", padding: "13px 16px", borderRadius: 12, fontSize: 15,
+              background: COLORS.navy, border: "1px solid rgba(255,255,255,0.1)",
+              color: "#E5E7EB", outline: "none", fontFamily: FONT, boxSizing: "border-box",
+              transition: "border-color 0.2s",
+            }}
+            onFocus={(e) => e.target.style.borderColor = `${COLORS.primaryBlue}60`}
+            onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.1)"}
+          />
+        </div>
+
+        {/* Telefone */}
+        <div style={{ marginBottom: 24 }}>
+          <label style={{ fontSize: 13, fontWeight: 600, color: "rgba(229,231,235,0.7)", marginBottom: 6, display: "block", fontFamily: FONT }}>
+            Seu WhatsApp
+          </label>
+          <input
+            type="tel"
+            placeholder="(00) 00000-0000"
+            value={telefone}
+            onChange={(e) => setTelefone(formatPhone(e.target.value))}
+            style={{
+              width: "100%", padding: "13px 16px", borderRadius: 12, fontSize: 15,
+              background: COLORS.navy, border: "1px solid rgba(255,255,255,0.1)",
+              color: "#E5E7EB", outline: "none", fontFamily: FONT, boxSizing: "border-box",
+              transition: "border-color 0.2s",
+            }}
+            onFocus={(e) => e.target.style.borderColor = `${COLORS.primaryBlue}60`}
+            onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.1)"}
+          />
+        </div>
+
+        {/* Submit */}
+        <button
+          onClick={handleSubmit}
+          disabled={!nome.trim() || telefone.replace(/\D/g, "").length < 10 || sending}
+          style={{
+            width: "100%", padding: "15px 28px", borderRadius: 14, fontSize: 16, fontWeight: 700,
+            border: "none", cursor: nome.trim() && telefone.replace(/\D/g, "").length >= 10 ? "pointer" : "not-allowed",
+            fontFamily: FONT, color: "#fff",
+            background: nome.trim() && telefone.replace(/\D/g, "").length >= 10
+              ? `linear-gradient(135deg, ${COLORS.purple}, ${COLORS.magenta}, ${COLORS.orange})`
+              : "rgba(255,255,255,0.1)",
+            boxShadow: nome.trim() && telefone.replace(/\D/g, "").length >= 10
+              ? "0 0 35px rgba(193,53,132,0.22)" : "none",
+            transition: "all 0.25s ease",
+            opacity: sending ? 0.7 : 1,
+          }}
+        >
+          {sending ? "Redirecionando..." : "🚀 Garantir Minha Vaga no WhatsApp"}
+        </button>
+
+        <p style={{ fontSize: 11, color: "rgba(229,231,235,0.25)", textAlign: "center", marginTop: 14, margin: "14px 0 0 0", fontFamily: FONT }}>
+          🔒 Seus dados estão seguros e não serão compartilhados
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ════════════════════════════════════════════
 // ─── MAIN PAGE ───
 // ════════════════════════════════════════════
@@ -156,6 +302,8 @@ export default function WorkiMetaAdsLanding() {
   const offerRef = useRef(null);
   const scrollToOffer = () => offerRef.current?.scrollIntoView({ behavior: "smooth" });
   const [showSticky, setShowSticky] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const openForm = () => setShowModal(true);
 
   useEffect(() => {
     const h = () => setShowSticky(window.scrollY > 600);
@@ -613,7 +761,7 @@ export default function WorkiMetaAdsLanding() {
                 ou 6x de R$ 333,33 sem juros
               </p>
 
-              <CTAIG onClick={() => window.open("#checkout", "_blank")} full>
+              <CTAIG onClick={openForm} full>
                 🚀 Garantir Minha Vaga Agora
               </CTAIG>
 
@@ -647,6 +795,9 @@ export default function WorkiMetaAdsLanding() {
         </div>
       </section>
 
+      {/* ════════════════════════════════ WHATSAPP MODAL ════════════════════════════════ */}
+      <WhatsAppModal open={showModal} onClose={() => setShowModal(false)} />
+
       {/* ════════════════════════════════ FOOTER ════════════════════════════════ */}
       <footer style={{ padding: "36px 20px", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
         <p style={{ fontSize: 13, color: "rgba(229,231,235,0.25)", margin: 0 }}>
@@ -661,7 +812,7 @@ export default function WorkiMetaAdsLanding() {
         borderTop: "1px solid rgba(255,255,255,0.06)",
         display: showSticky ? "flex" : "none", justifyContent: "center", zIndex: 100,
       }}>
-        <button onClick={scrollToOffer} style={{
+        <button onClick={openForm} style={{
           width: "100%", maxWidth: 400,
           background: `linear-gradient(135deg, ${COLORS.purple}, ${COLORS.magenta}, ${COLORS.orange})`,
           color: "#fff", fontWeight: 800, borderRadius: 14, padding: "14px 28px",
